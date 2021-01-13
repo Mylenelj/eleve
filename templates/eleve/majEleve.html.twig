@@ -1,0 +1,10 @@
+{# Va aller chercher le nom de la variable contenant le formaulaire dans le controller. Donc le nom est form (ligne 37 dans le controller) #}
+
+{{form_start(form)}}
+{{form_row(form.nom)}}
+{{form_row(form.prenom)}}
+{{form_row(form.dateNaissance)}}
+{{form_row(form.moyenne)}}
+{{form_row(form.appreciation)}}
+<input type="submit" value="Envoyer">
+{{form_end(form)}}
