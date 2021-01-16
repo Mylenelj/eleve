@@ -42,6 +42,12 @@ class Eleve
      */
     private $moyenne;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Classe::class, inversedBy="relation")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $classe;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -103,6 +109,18 @@ class Eleve
     public function setMoyenne(float $moyenne): self
     {
         $this->moyenne = $moyenne;
+
+        return $this;
+    }
+
+    public function getClasse(): ?Classe
+    {
+        return $this->classe;
+    }
+
+    public function setClasse(?Classe $classe): self
+    {
+        $this->classe = $classe;
 
         return $this;
     }

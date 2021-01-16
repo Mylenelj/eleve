@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Eleve;
+use App\Repository\EleveRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
 class EleveController extends AbstractController
@@ -14,7 +15,7 @@ class EleveController extends AbstractController
     #[Route('/', name: 'eleves')]
     public function index(): Response
     {
-        //on appelle le repository Eleve (c'est que pour les select (pour cheercher les données))
+        //on appelle le repository Eleve (c'est que pour les select (pour chercher les données))
         $repo = $this->getDoctrine()->getRepository(Eleve::class);
 
         //Liste des eleves
@@ -54,5 +55,15 @@ class EleveController extends AbstractController
             'eleve' => $eleve,
             'form' => $form->createView()
         ]);
+    }
+    /**
+     * @Route("delete/{id} ", name="RouteSuppression")
+     */
+    public function FunctionSuppression(EleveRepository $repository, EntityManagerInterface $manager, int $id): Response
+    {
+        $eleve = $repository->find($id);
+        $manager->remove($eleve);
+        $manager->flush();
+        return $this->redirectToRoute('eleves');
     }
 }

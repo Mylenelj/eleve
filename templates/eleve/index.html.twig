@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block body %}
+
 	<a href="{{path('nouvelEleve')}}">Créer un éleve</a>
 	<table>
 		<thead>
@@ -27,6 +28,8 @@
 					<td>{{eleve.dateNaissance|date("m/d/Y")}}</td>
 					<td>
 						<a href="{{path('modifEleve',{id:eleve.id})}}">Modifier</a>
+						<a href="{{path('RouteSuppression',{id:eleve.id})}}">Supprimer un éleve</a>
+
 					</td>
 
 				</tr>

@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{# Va aller chercher le nom de la variable contenant le formaulaire dans le controller. Donc le nom est form (ligne 37 dans le controller) #}
+{% block body %}
+	{{form_start(form)}}
+	{{form_row(form.nom)}}
+	<input type="submit" value="Envoyer">
+	{{form_end(form)}}
+{% endblock body %}

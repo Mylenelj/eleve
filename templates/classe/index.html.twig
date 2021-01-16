@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des classes
+{% endblock %}
+
+{% block body %}
+	<a href="{{path('newClasse')}}">Créer une classe</a>
+	<table>
+		<thead>
+			<tr>
+				<th>Nom</th>
+				<th></th>
+
+			</tr>
+		</thead>
+
+		<tbody>
+			{% for classe in classes %}
+				<tr>
+					<td>{{classe.nom}}</td>
+
+					<td>
+						<a href="{{path('updateClasse',{id:classe.id})}}">Modifier</a>
+						<a href="{{path('deleteClasse',{id:classe.id})}}">Supprimer une classe</a>
+
+					</td>
+
+				</tr>
+
+			{% endfor %}
+		</tbody>
+
+		<tfoot>
+			<tr>
+				<th>Nom</th>
+
+			</tr>
+		</tfoot>
+	</table>
+{% endblock %}
